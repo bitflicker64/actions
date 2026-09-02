@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 690" width="1440" height="690">
+  <rect x="0" y="0" width="1440" height="690" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="26" font-weight="bold" fill="#1f2328">Where the source commit reaches the image, and where it is dropped</text>
+  <text x="40" y="72" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" fill="#57606a">Both publish paths resolve the source SHA. Only one of them puts it on the image.</text>
+
+  <!-- column 1 -->
+  <rect x="40" y="100" width="440" height="38" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="260" y="126" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#1a7f37">pd / store / server, today</text>
+
+  <rect x="40" y="152" width="440" height="96" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="60" y="180" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f2328">prepare job</text>
+  <text x="60" y="206" font-family="Menlo, Consolas, monospace" font-size="14" fill="#24292f">source_sha = git ls-remote</text>
+  <text x="60" y="228" font-family="Menlo, Consolas, monospace" font-size="14" fill="#24292f">apache/hugegraph @ master</text>
+
+  <line x1="260" y1="248" x2="260" y2="298" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="274" y="278" font-family="Menlo, Consolas, monospace" font-size="15" fill="#1a7f37">source_sha</text>
+
+  <rect x="40" y="304" width="440" height="122" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="60" y="332" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f2328">build step</text>
+  <text x="60" y="358" font-family="Menlo, Consolas, monospace" font-size="14" fill="#24292f">docker buildx build \</text>
+  <text x="60" y="380" font-family="Menlo, Consolas, monospace" font-size="13" fill="#1a7f37">--label org.opencontainers.image.revision</text>
+  <text x="60" y="400" font-family="Menlo, Consolas, monospace" font-size="13" fill="#1a7f37">        =$SOURCE_SHA</text>
+  <text x="60" y="418" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" fill="#57606a">bake path uses --set "*.labels...." for the same value</text>
+
+  <line x1="260" y1="426" x2="260" y2="476" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="40" y="482" width="440" height="126" rx="8" fill="#ffffff" stroke="#1a7f37" stroke-width="2"/>
+  <text x="60" y="510" font-family="Menlo, Consolas, monospace" font-size="15" font-weight="bold" fill="#1f2328">hugegraph/pd:latest</text>
+  <text x="60" y="538" font-family="Menlo, Consolas, monospace" font-size="13" fill="#24292f">org.opencontainers.image.revision</text>
+  <text x="60" y="558" font-family="Menlo, Consolas, monospace" font-size="13" fill="#24292f">  98477f0f56a3ad49593ec7632f2f0ee1...</text>
+  <text x="60" y="588" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#1a7f37">traceable to a commit</text>
+
+  <!-- column 2 -->
+  <rect x="500" y="100" width="440" height="38" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/>
+  <text x="720" y="126" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#cf222e">hubble, today</text>
+
+  <rect x="500" y="152" width="440" height="96" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="520" y="180" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f2328">prepare job</text>
+  <text x="520" y="206" font-family="Menlo, Consolas, monospace" font-size="14" fill="#24292f">source_sha = git ls-remote</text>
+  <text x="520" y="228" font-family="Menlo, Consolas, monospace" font-size="14" fill="#24292f">apache/hugegraph-toolchain @ master</text>
+
+  <line x1="720" y1="248" x2="720" y2="298" stroke="#57606a" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>
+  <text x="734" y="270" font-family="Menlo, Consolas, monospace" font-size="15" fill="#cf222e">source_sha, used</text>
+  <text x="734" y="292" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#cf222e">only to check out</text>
+
+  <rect x="500" y="304" width="440" height="122" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="520" y="332" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f2328">build step</text>
+  <text x="520" y="358" font-family="Menlo, Consolas, monospace" font-size="14" fill="#24292f">docker/build-push-action@v7</text>
+  <text x="520" y="380" font-family="Menlo, Consolas, monospace" font-size="13" fill="#24292f">tags: hugegraph/hubble:latest</text>
+  <text x="520" y="404" font-family="Menlo, Consolas, monospace" font-size="13" fill="#cf222e">(no labels input)</text>
+
+  <line x1="720" y1="426" x2="720" y2="476" stroke="#57606a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="500" y="482" width="440" height="126" rx="8" fill="#ffffff" stroke="#cf222e" stroke-width="2"/>
+  <text x="520" y="510" font-family="Menlo, Consolas, monospace" font-size="15" font-weight="bold" fill="#1f2328">hugegraph/hubble:latest</text>
+  <text x="520" y="538" font-family="Menlo, Consolas, monospace" font-size="13" fill="#24292f">org.opencontainers.image.version 22.04</text>
+  <text x="520" y="558" font-family="Menlo, Consolas, monospace" font-size="13" fill="#57606a">(inherited from the base image)</text>
+  <text x="520" y="588" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#cf222e">no image.revision at all</text>
+
+  <!-- column 3 -->
+  <rect x="960" y="100" width="440" height="38" rx="6" fill="#ddf4ff" stroke="#0969da" stroke-width="1.5"/>
+  <text x="1180" y="126" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="19" font-weight="bold" fill="#0969da">hubble, with this change</text>
+
+  <rect x="960" y="152" width="440" height="96" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="980" y="180" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f2328">prepare job, unchanged</text>
+  <text x="980" y="206" font-family="Menlo, Consolas, monospace" font-size="14" fill="#24292f">source_sha = git ls-remote</text>
+  <text x="980" y="228" font-family="Menlo, Consolas, monospace" font-size="14" fill="#24292f">apache/hugegraph-toolchain @ master</text>
+
+  <line x1="1180" y1="248" x2="1180" y2="298" stroke="#0969da" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1194" y="278" font-family="Menlo, Consolas, monospace" font-size="15" fill="#0969da">source_sha</text>
+
+  <rect x="960" y="304" width="440" height="122" rx="8" fill="#f6f8fa" stroke="#0969da" stroke-width="1.5"/>
+  <text x="980" y="332" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" fill="#1f2328">build step</text>
+  <text x="980" y="358" font-family="Menlo, Consolas, monospace" font-size="14" fill="#24292f">docker/build-push-action@v7</text>
+  <text x="980" y="380" font-family="Menlo, Consolas, monospace" font-size="13" fill="#0969da">labels: org.opencontainers.image.revision</text>
+  <text x="980" y="400" font-family="Menlo, Consolas, monospace" font-size="13" fill="#0969da">        =source_sha</text>
+  <text x="980" y="418" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" fill="#57606a">image.source is stamped the same way</text>
+
+  <line x1="1180" y1="426" x2="1180" y2="476" stroke="#0969da" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="960" y="482" width="440" height="126" rx="8" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
+  <text x="980" y="510" font-family="Menlo, Consolas, monospace" font-size="15" font-weight="bold" fill="#1f2328">hugegraph/hubble:latest</text>
+  <text x="980" y="538" font-family="Menlo, Consolas, monospace" font-size="13" fill="#24292f">org.opencontainers.image.revision</text>
+  <text x="980" y="558" font-family="Menlo, Consolas, monospace" font-size="13" fill="#24292f">  toolchain commit the build used</text>
+  <text x="980" y="588" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#0969da">traceable to a commit</text>
+
+  <text x="40" y="648" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#57606a">Labels read from the image configs on Docker Hub on 2026-09-02. The same reusable workflow builds loader, ai and vermeer, so those gain the label too.</text>
+</svg>
