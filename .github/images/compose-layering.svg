@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 700" width="1300" height="700">
+  <rect x="0" y="0" width="1300" height="700" fill="#ffffff"/>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+
+    <text x="60" y="46" font-size="23" font-weight="bold" fill="#cf222e">master today</text>
+    <text x="60" y="74" font-size="16" fill="#57606a">docker compose -f dev.yml -f ci-override.yml</text>
+
+    <text x="700" y="46" font-size="23" font-weight="bold" fill="#1a7f37">with this PR</text>
+    <text x="700" y="74" font-size="16" fill="#57606a">docker compose -f hstore.yml -f dev.yml -f ci-override.yml</text>
+
+    <rect x="720" y="112" width="520" height="66" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="2"/>
+    <text x="740" y="139" font-size="18" font-weight="bold" fill="#1f2328">docker/docker-compose-hstore.yml</text>
+    <text x="740" y="163" font-size="15" fill="#57606a">env, network, published ports, depends_on, volumes</text>
+
+    <rect x="80" y="196" width="520" height="66" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="2"/>
+    <text x="100" y="223" font-size="18" font-weight="bold" fill="#1f2328">docker/docker-compose.dev.yml</text>
+    <text x="100" y="247" font-size="15" fill="#57606a">image, build, start_period. nothing else</text>
+
+    <rect x="720" y="196" width="520" height="66" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="2"/>
+    <text x="740" y="223" font-size="18" font-weight="bold" fill="#1f2328">docker/docker-compose.dev.yml</text>
+    <text x="740" y="247" font-size="15" fill="#57606a">image, build, start_period. nothing else</text>
+
+    <rect x="80" y="280" width="520" height="66" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="2"/>
+    <text x="100" y="307" font-size="18" font-weight="bold" fill="#1f2328">/tmp/docker-compose.ci.override.yml</text>
+    <text x="100" y="331" font-size="15" fill="#57606a">pinned images, mem and cpu limits, JAVA_OPTS</text>
+
+    <rect x="720" y="280" width="520" height="66" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="2"/>
+    <text x="740" y="307" font-size="18" font-weight="bold" fill="#1f2328">/tmp/docker-compose.ci.override.yml</text>
+    <text x="740" y="331" font-size="15" fill="#57606a">pinned images, mem and cpu limits, JAVA_OPTS</text>
+
+    <line x1="340" y1="346" x2="340" y2="392" stroke="#57606a" stroke-width="2"/>
+    <polygon points="340,402 334,388 346,388" fill="#57606a"/>
+    <text x="356" y="378" font-size="15" fill="#57606a">merged</text>
+
+    <line x1="980" y1="346" x2="980" y2="392" stroke="#57606a" stroke-width="2"/>
+    <polygon points="980,402 974,388 986,388" fill="#57606a"/>
+    <text x="996" y="378" font-size="15" fill="#57606a">merged</text>
+
+    <rect x="80" y="402" width="520" height="106" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+    <text x="100" y="429" font-size="17" font-weight="bold" fill="#1f2328">effective pd and store environment</text>
+    <text x="100" y="459" font-size="16" fill="#cf222e" font-family="monospace">HG_PD_GRPC_HOST        not set</text>
+    <text x="100" y="485" font-size="16" fill="#cf222e" font-family="monospace">HG_STORE_PD_ADDRESS    not set</text>
+
+    <rect x="720" y="402" width="520" height="106" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="2"/>
+    <text x="740" y="429" font-size="17" font-weight="bold" fill="#1f2328">effective pd and store environment</text>
+    <text x="740" y="459" font-size="16" fill="#1a7f37" font-family="monospace">HG_PD_GRPC_HOST        pd</text>
+    <text x="740" y="485" font-size="16" fill="#1a7f37" font-family="monospace">HG_STORE_PD_ADDRESS    pd:8686</text>
+
+    <line x1="340" y1="508" x2="340" y2="546" stroke="#57606a" stroke-width="2"/>
+    <polygon points="340,556 334,542 346,542" fill="#57606a"/>
+    <line x1="980" y1="508" x2="980" y2="546" stroke="#57606a" stroke-width="2"/>
+    <polygon points="980,556 974,542 986,542" fill="#57606a"/>
+
+    <rect x="80" y="556" width="520" height="76" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="2"/>
+    <text x="100" y="584" font-size="16" fill="#cf222e" font-family="monospace">ERROR: missing required env</text>
+    <text x="100" y="612" font-size="16" fill="#cf222e" font-family="monospace">container hg-pd exited (2)</text>
+
+    <rect x="720" y="556" width="520" height="76" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="2"/>
+    <text x="740" y="584" font-size="16" fill="#1a7f37" font-family="monospace">pd healthy -&gt; store healthy</text>
+    <text x="740" y="612" font-size="16" fill="#1a7f37" font-family="monospace">-&gt; server healthy</text>
+
+    <text x="60" y="672" font-size="15" fill="#57606a">Later steps curl 127.0.0.1:8620 and 127.0.0.1:8520. Only docker-compose-hstore.yml publishes those ports.</text>
+  </g>
+</svg>
